@@ -26,6 +26,7 @@ embeddings = GPT4AllEmbeddings()
 client = chromadb.PersistentClient(path="persist/")
 
 
-vectorstore = Chroma(
+vectorstore = Chroma.from_documents(
+    documents=documents,
     client=client, collection_name="newcol", embedding_function=embeddings
 )
